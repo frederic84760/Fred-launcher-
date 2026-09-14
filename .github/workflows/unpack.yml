@@ -1,0 +1,35 @@
+name: Install Fred Launcher
+
+on:
+  push:
+    paths:
+      - ".github/workflows/unpack.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  unpack:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Recuperer le depot
+        uses: actions/checkout@v4
+
+      - name: Decompresser Fred Launcher
+        run: |
+          rm -rf extracted
+          mkdir extracted
+          unzip -q FredLauncher.zip -d extracted
+          cp -a extracted/FredLauncher/. .
+          rm -rf extracted
+          rm FredLauncher.zip
+
+      - name: Enregistrer le projet
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Installation du projet Fred Launcher" || exit 0
+          git push
