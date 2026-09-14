@@ -39,11 +39,6 @@ jobs:
           yes | sdkmanager --licenses > /dev/null || true
           sdkmanager "platforms;android-36" "build-tools;36.0.0"
 
-      - name: Compatibilite Kotlin AGP 9
-        run: |
-          echo "android.builtInKotlin=false" >> gradle.properties
-          echo "android.newDsl=false" >> gradle.properties
-
       - name: Installer Gradle 9.6
         uses: gradle/actions/setup-gradle@v4
         with:
