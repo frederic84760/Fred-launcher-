@@ -34,7 +34,7 @@ jobs:
       - name: Installer Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Installer Android 37
+      - name: Installer Android 36
         run: |
           yes | sdkmanager --licenses > /dev/null || true
           sdkmanager "platforms;android-37" "build-tools;36.0.0"
