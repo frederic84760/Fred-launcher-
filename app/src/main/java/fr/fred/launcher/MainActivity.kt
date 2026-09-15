@@ -1,4 +1,4 @@
-įpackage fr.fred.launcher
+package fr.fred.launcher
 
 import android.content.Intent
 import android.graphics.drawable.Drawable
